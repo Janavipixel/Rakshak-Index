@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800;900&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=8">
   <style>
     /* Direct embedded styles guaranteeing immediate render with zero cache delay */
     :root {
@@ -215,7 +215,7 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      max-width: 650px;
+      max-width: 680px;
     }
 
     .team-identity-heading {
@@ -277,8 +277,8 @@
     .hero-actions {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      margin-bottom: 3.5rem;
+      gap: 0.95rem;
+      margin-bottom: 3.25rem;
       flex-wrap: wrap;
     }
 
@@ -286,23 +286,29 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       font-family: var(--font-display);
-      font-size: 0.96rem;
+      font-size: 0.9rem;
       font-weight: 800;
       letter-spacing: 0.04em;
-      padding: 1.05rem 2rem;
+      padding: 0.95rem 1.45rem;
       border-radius: 6px;
       text-decoration: none;
       cursor: pointer;
       transition: var(--transition);
       border: 1px solid transparent;
+      white-space: nowrap;
+    }
+
+    .btn:focus-visible {
+      outline: 2px solid var(--cyan-400);
+      outline-offset: 3px;
     }
 
     .btn-primary {
       background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
       color: #ffffff;
-      border-color: rgba(56, 189, 248, 0.4);
+      border-color: rgba(56, 189, 248, 0.45);
       box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
     }
 
@@ -315,10 +321,11 @@
 
     .btn-arrow {
       transition: transform 0.2s ease;
+      flex-shrink: 0;
     }
 
     .btn-primary:hover .btn-arrow {
-      transform: translateX(4px);
+      transform: translateX(3px);
     }
 
     .btn-secondary {
@@ -329,14 +336,15 @@
     }
 
     .btn-secondary:hover {
-      background: rgba(15, 39, 70, 0.9);
+      background: rgba(15, 39, 70, 0.95);
       border-color: var(--cyan-400);
       color: #ffffff;
       transform: translateY(-2px);
       box-shadow: 0 6px 22px rgba(14, 165, 233, 0.25);
     }
 
-    .github-icon {
+    .github-icon,
+    .ppt-icon {
       fill: currentColor;
       flex-shrink: 0;
     }
@@ -665,7 +673,7 @@
         Sentinel-1 SAR &bull; Earth Observation
       </span>
       <span class="team-pill">Team <strong class="team-name-highlight">TerraByte</strong></span>
-      <a href="https://github.com/Janavipixel/Disaster-API-Check" target="_blank" rel="noopener noreferrer" class="nav-github-link" aria-label="GitHub Repository" title="View Source on GitHub">
+      <a href="https://github.com/Janavipixel/Rakhshak" target="_blank" rel="noopener noreferrer" class="nav-github-link" aria-label="GitHub Repository" title="View Source on GitHub">
         <svg class="nav-github-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
           <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
         </svg>
@@ -696,20 +704,29 @@
 
       <!-- Prominent Action Buttons -->
       <div class="hero-actions">
-        <!-- Live Deployment Action Button -->
-        <a href="https://pillaisarveshx03.github.io/Rakshak/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="liveDeploymentBtn">
+        <!-- Live Deployment Action Button (Primary) -->
+        <a href="https://rakhshak-one.vercel.app/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" id="liveDeploymentBtn" aria-label="Open Live Deployment on Vercel">
           <span class="btn-text">LIVE DEPLOYMENT</span>
           <svg class="btn-arrow" viewBox="0 0 20 20" fill="currentColor" width="18" height="18" aria-hidden="true">
             <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
           </svg>
         </a>
 
-        <!-- GitHub Repository Action Button with Authentic GitHub Mark -->
-        <a href="https://github.com/Janavipixel/Disaster-API-Check" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="githubRepoBtn">
-          <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+        <!-- GitHub Repository Action Button (Complementary) -->
+        <a href="https://github.com/Janavipixel/Rakhshak" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" id="githubRepoBtn" aria-label="Open GitHub Repository">
+          <svg class="github-icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
           </svg>
           <span class="btn-text">GITHUB REPOSITORY</span>
+        </a>
+
+        <!-- View Project PPT Action Button (Complementary) -->
+        <a href="https://drive.google.com/drive/folders/1j-QFYsC6XzzYhCO5dN7w5zfR77yv5RUo?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-ppt" id="projectPptBtn" aria-label="View Project Presentation on Google Drive">
+          <svg class="ppt-icon" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h4v2H7v2h10v-2h-2v-2h4c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 12H5V5h14v10z"/>
+            <path d="M10 7.5v5l4-2.5z"/>
+          </svg>
+          <span class="btn-text">VIEW PROJECT PPT</span>
         </a>
       </div>
 
