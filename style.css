@@ -275,13 +275,12 @@ html, body {
   max-width: 560px;
 }
 
-/* Action Buttons */
 .hero-actions {
-  display: flex;
-  align-items: center;
+  display: inline-grid;
+  grid-template-columns: repeat(2, minmax(210px, 1fr));
   gap: 0.95rem;
   margin-bottom: 3.25rem;
-  flex-wrap: wrap;
+  max-width: 500px;
 }
 
 .btn {
@@ -345,8 +344,28 @@ html, body {
   box-shadow: 0 6px 22px rgba(14, 165, 233, 0.25);
 }
 
+.btn-youtube {
+  background: linear-gradient(135deg, #b91c1c 0%, #dc2626 50%, #ef4444 100%);
+  color: #ffffff;
+  border-color: rgba(254, 202, 202, 0.35);
+  box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+}
+
+.btn-youtube:hover {
+  background: linear-gradient(135deg, #dc2626 0%, #ef4444 50%, #f87171 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(239, 68, 68, 0.55);
+}
+
+.btn-youtube:focus-visible {
+  outline: 2px solid #f87171;
+  outline-offset: 3px;
+}
+
 .github-icon,
-.ppt-icon {
+.ppt-icon,
+.youtube-icon {
   fill: currentColor;
   flex-shrink: 0;
 }
@@ -611,7 +630,12 @@ html, body {
   }
 
   .hero-actions {
+    display: inline-grid;
+    grid-template-columns: repeat(2, minmax(200px, 1fr));
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
     width: 100%;
   }
 
@@ -662,8 +686,10 @@ html, body {
   }
 
   .hero-actions {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 0.85rem;
+    width: 100%;
   }
 
   .btn {
