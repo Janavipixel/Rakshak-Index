@@ -1,0 +1,674 @@
+/* ==========================================================================
+   RAKSHAK — Full-Screen Aerospace College Project Showcase
+   Developed by Team TerraByte
+   Palette: Deep Navy Blue, Rich Blue, Steel Blue, Subtle Cyan Highlights
+   ========================================================================== */
+
+:root {
+  --bg-deep: #050c18;
+  --bg-surface: #0a172a;
+  --bg-card: rgba(10, 24, 44, 0.75);
+  
+  --navy-950: #030812;
+  --navy-900: #071324;
+  --navy-850: #0b1c34;
+  --navy-800: #0f2746;
+  --navy-700: #173862;
+  
+  --blue-600: #2563eb;
+  --blue-500: #3b82f6;
+  --blue-700: #1d4ed8;
+
+  --cyan-400: #38bdf8;
+  --cyan-500: #0ea5e9;
+  --cyan-900: rgba(14, 165, 233, 0.15);
+
+  --steel-300: #93b5d8;
+  --steel-400: #6b8ea9;
+  --steel-500: #486d91;
+  --steel-700: #254467;
+
+  --text-pure: #ffffff;
+  --text-heading: #f0f6fc;
+  --text-body: #a5c0dc;
+  --text-muted: #6e8ea9;
+
+  --border-dark: rgba(56, 189, 248, 0.18);
+  --border-strong: rgba(56, 189, 248, 0.35);
+
+  --font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  min-height: 100vh;
+  width: 100%;
+  background-color: var(--bg-deep);
+  color: var(--text-body);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Ambient Starfield & Grid Texture */
+.ambient-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: 
+    radial-gradient(circle at 75% 25%, rgba(14, 165, 233, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 15% 85%, rgba(37, 99, 235, 0.08) 0%, transparent 40%),
+    radial-gradient(rgba(147, 181, 216, 0.15) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 48px 48px;
+}
+
+/* ==========================================================================
+   Top Aerospace Navigation Bar
+   ========================================================================== */
+.top-nav {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 1.75rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+}
+
+/* Genuine Rakshak Project Emblem from Reference Site */
+.rakshak-emblem {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.emblem-core {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+.nav-title {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--text-pure);
+  letter-spacing: 0.08em;
+}
+
+.nav-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.telemetry-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--cyan-400);
+  background: rgba(14, 165, 233, 0.08);
+  border: 1px solid var(--border-dark);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  letter-spacing: 0.03em;
+}
+
+.pulse-beacon {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--cyan-400);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
+}
+
+.team-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--steel-300);
+  background: rgba(11, 28, 52, 0.6);
+  border: 1px solid rgba(147, 181, 216, 0.2);
+  padding: 0.35rem 0.85rem;
+  border-radius: 9999px;
+  letter-spacing: 0.04em;
+}
+
+.nav-github-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(11, 28, 52, 0.6);
+  border: 1px solid rgba(147, 181, 216, 0.25);
+  color: var(--steel-300);
+  text-decoration: none;
+  transition: var(--transition);
+  flex-shrink: 0;
+}
+
+.nav-github-link:hover {
+  color: #ffffff;
+  background: rgba(15, 39, 70, 0.95);
+  border-color: var(--cyan-400);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(14, 165, 233, 0.3);
+}
+
+.nav-github-icon {
+  width: 19px;
+  height: 19px;
+  fill: currentColor;
+}
+
+/* ==========================================================================
+   Full Viewport Hero Showcase (Spacious, No Boxed Centered Card)
+   ========================================================================== */
+.hero-viewport {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: calc(100vh - 100px);
+  padding: 1rem 3.5rem 3rem;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* Left Content Column */
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 650px;
+}
+
+.team-identity-heading {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  margin-bottom: 0.95rem;
+}
+
+.built-by-label {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--steel-300);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.terrabyte-brand {
+  font-family: var(--font-display);
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: var(--cyan-400);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 0 24px rgba(56, 189, 248, 0.4);
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 900;
+  color: var(--text-pure);
+  letter-spacing: -0.03em;
+  line-height: 1.0;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 4px 30px rgba(14, 165, 233, 0.2);
+}
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--cyan-400);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.hero-description {
+  font-size: 1.25rem;
+  line-height: 1.7;
+  color: var(--text-body);
+  margin-bottom: 2.5rem;
+  max-width: 560px;
+}
+
+/* Action Buttons */
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  font-family: var(--font-display);
+  font-size: 0.96rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  padding: 1.05rem 2rem;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition);
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #1d4ed8 0%, #2563eb 100%);
+  color: #ffffff;
+  border-color: rgba(56, 189, 248, 0.4);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.35);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(135deg, #2563eb 0%, #38bdf8 100%);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(56, 189, 248, 0.45);
+}
+
+.btn-arrow {
+  transition: transform 0.2s ease;
+}
+
+.btn-primary:hover .btn-arrow {
+  transform: translateX(4px);
+}
+
+.btn-secondary {
+  background: rgba(11, 28, 52, 0.75);
+  color: #ffffff;
+  border-color: rgba(147, 181, 216, 0.25);
+  box-shadow: 0 4px 16px rgba(3, 8, 18, 0.4);
+}
+
+.btn-secondary:hover {
+  background: rgba(15, 39, 70, 0.9);
+  border-color: var(--cyan-400);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(14, 165, 233, 0.25);
+}
+
+.github-icon {
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+/* Team TerraByte Credit Section */
+.team-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(147, 181, 216, 0.15);
+}
+
+.team-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.team-label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--steel-300);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.team-name-highlight {
+  color: var(--cyan-400);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.team-divider {
+  flex-grow: 1;
+  height: 1px;
+  background: linear-gradient(to right, rgba(147, 181, 216, 0.15) 0%, transparent 100%);
+}
+
+.team-members {
+  display: flex;
+  gap: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.member-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(11, 28, 52, 0.5);
+  border: 1px solid rgba(147, 181, 216, 0.2);
+  border-radius: 4px;
+  padding: 0.55rem 0.95rem;
+  transition: var(--transition);
+}
+
+.member-chip:hover {
+  border-color: var(--cyan-400);
+  background: rgba(15, 39, 70, 0.7);
+}
+
+.member-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.15);
+  color: var(--cyan-400);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+}
+
+.member-name {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+/* ==========================================================================
+   Right Column: 3D Rotating Earth Globe Stage
+   ========================================================================== */
+.hero-visual {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+}
+
+.globe-stage {
+  position: relative;
+  width: 540px;
+  height: 540px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.earth-canvas {
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  display: block;
+  filter: drop-shadow(0 0 45px rgba(14, 165, 233, 0.25));
+}
+
+/* Orbital Rings & Satellite Blip */
+.orbit-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.orbit-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px dashed rgba(56, 189, 248, 0.35);
+}
+
+.orbit-ring-primary {
+  width: 530px;
+  height: 220px;
+  transform: rotate(-28deg);
+  animation: orbitSpin 24s linear infinite;
+}
+
+.orbit-ring-secondary {
+  width: 480px;
+  height: 180px;
+  transform: rotate(42deg);
+  opacity: 0.4;
+  border: 1px solid rgba(37, 99, 235, 0.3);
+}
+
+.satellite-blip {
+  position: absolute;
+  top: 15%;
+  left: 92%;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transform: translate(-50%, -50%);
+}
+
+.blip-ping {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #38bdf8;
+  box-shadow: 0 0 12px #38bdf8;
+  animation: beaconPulse 1.8s ease-out infinite;
+}
+
+.blip-label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: #38bdf8;
+  background: rgba(4, 10, 20, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.35);
+  padding: 0.15rem 0.45rem;
+  border-radius: 3px;
+  white-space: nowrap;
+}
+
+@keyframes beaconPulse {
+  0% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.6); }
+  70% { box-shadow: 0 0 0 8px rgba(56, 189, 248, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(56, 189, 248, 0); }
+}
+
+/* Telemetry HUD Coordinates */
+.telemetry-hud {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  background: rgba(7, 19, 36, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.25);
+  border-radius: 4px;
+  padding: 0.6rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  backdrop-filter: blur(8px);
+}
+
+.hud-item {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--steel-300);
+  display: flex;
+  gap: 0.6rem;
+}
+
+.hud-key {
+  color: var(--cyan-400);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1120px) {
+  .hero-viewport {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    padding: 1rem 2rem 2.5rem;
+  }
+  .hero-title {
+    font-size: 3.8rem;
+  }
+  .globe-stage {
+    width: 440px;
+    height: 440px;
+  }
+  .earth-canvas {
+    width: 400px;
+    height: 400px;
+  }
+  .orbit-ring-primary {
+    width: 430px;
+    height: 180px;
+  }
+}
+
+@media (max-width: 920px) {
+  .top-nav {
+    padding: 1.25rem 1.5rem;
+  }
+
+  .hero-viewport {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    padding: 1rem 1.5rem 3rem;
+    gap: 3rem;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .team-identity-heading {
+    justify-content: center;
+  }
+
+  .hero-title {
+    font-size: 3.2rem;
+  }
+
+  .hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .team-container {
+    width: 100%;
+    align-items: center;
+  }
+
+  .team-members {
+    justify-content: center;
+  }
+
+  .globe-stage {
+    width: 320px;
+    height: 320px;
+  }
+
+  .earth-canvas {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orbit-ring-primary {
+    width: 320px;
+    height: 140px;
+  }
+
+  .telemetry-hud {
+    position: static;
+    margin-top: 1rem;
+    width: 100%;
+    align-items: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .built-by-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+  }
+
+  .terrabyte-brand {
+    font-size: 1.45rem;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .team-members {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .member-chip {
+    width: 100%;
+    justify-content: center;
+  }
+}
