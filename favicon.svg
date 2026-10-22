@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a172a"/>
+      <stop offset="100%" stop-color="#030812"/>
+    </linearGradient>
+    <linearGradient id="globeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1d4ed8"/>
+      <stop offset="55%" stop-color="#0f2746"/>
+      <stop offset="100%" stop-color="#050c18"/>
+    </linearGradient>
+    <linearGradient id="orbitGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.35"/>
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ffffff"/>
+    </linearGradient>
+    <filter id="glow" x="-25%" y="-25%" width="150%" height="150%">
+      <feGaussianBlur stdDeviation="1.5" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- High-contrast rounded backdrop for crisp display on light and dark browser tabs -->
+  <rect x="2" y="2" width="60" height="60" rx="14" fill="url(#bgGrad)" stroke="#38bdf8" stroke-width="1.6" stroke-opacity="0.45"/>
+
+  <!-- Earth Globe Core -->
+  <circle cx="32" cy="32" r="16" fill="url(#globeGrad)" stroke="#38bdf8" stroke-width="1.8"/>
+
+  <!-- Globe Latitude / Meridian Lines for Earth observation depth -->
+  <ellipse cx="32" cy="32" rx="7" ry="15.8" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.55"/>
+  <path d="M16 32 C 16 39, 48 39, 48 32" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.5" stroke-dasharray="2 2"/>
+
+  <!-- Inclined Satellite Orbit Ring -->
+  <ellipse cx="32" cy="32" rx="25" ry="9.5" transform="rotate(-30 32 32)" fill="none" stroke="url(#orbitGrad)" stroke-width="2.4" stroke-linecap="round"/>
+
+  <!-- Active Sentinel Satellite Radar Node (Top-Right along orbit) -->
+  <g transform="rotate(-30 32 32)">
+    <!-- Radar ping wave -->
+    <circle cx="56" cy="32" r="5" fill="none" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.6"/>
+    <!-- Outer satellite beacon glow -->
+    <circle cx="56" cy="32" r="3.2" fill="#38bdf8" filter="url(#glow)"/>
+    <!-- Inner bright white telemetry core -->
+    <circle cx="56" cy="32" r="1.8" fill="#ffffff"/>
+  </g>
+</svg>
